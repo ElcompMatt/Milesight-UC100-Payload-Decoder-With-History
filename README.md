@@ -42,7 +42,7 @@ public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "
 }
 ```
 
-### UNix Time Helper Class 
+### Unix Time Helper Class 
 **[DateTime Helper Class or Unix Time (C#)](https://github.com/ElcompMatt/MilesightUC100/blob/main/UnixTimeConverter.cs)**
 
 This is a simple converter for converting the Unix seconds timestamp in the payload to standard DateTime string. You can convert it to whatever format you want ater that. 
