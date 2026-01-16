@@ -2,7 +2,7 @@
 In the UC100 you can set the device to log historical data when the device loses comms, it will then retransmit that data when it comes back on line.
 
 >[!WARNING]
-This has only been tested with firmware v1.9 (of the milesight UC100), so test it properly if you are verions lower than v1.9. 
+This has only been tested with firmware v1.9 (of the milesight UC100), so test it properly if you are using verions lower than v1.9. 
 
 **[UC100 User Guide](https://resource.milesight.com/milesight/iot/document/uc100-user-guide-en.pdf)**
 
