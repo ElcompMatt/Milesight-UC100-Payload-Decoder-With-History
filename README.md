@@ -21,11 +21,11 @@ When the JSON payload is received by an end point there are two flags to conside
 
 It uses the existing Milesight payload decoders and then puts it in a structured format. 
 
-Currently the real time and historical is in two seperate payload formats from the device, the prupose of this is to have both real time and history data in the same format. 
+Currently the real time and historical payloads are in two seperate payload formats from the device, the purpose of the decoder is to have both payloads in the same format. 
 
 ### Scaling Properties
 
-In the script there are two properties for scaling the values in an end point/webhook, not in TTN.
+In the script there are two additional properties for scaling and operating on the register values. Typically this should be done in your end point and performaing the required calculations.
 
 **ScalingValue : int**
 
