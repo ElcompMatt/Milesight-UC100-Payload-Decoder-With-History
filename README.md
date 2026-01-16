@@ -3,16 +3,31 @@ In the UC100 you can set the device to log historical data when the device loses
 
 **[UC100 User Guide](https://resource.milesight.com/milesight/iot/document/uc100-user-guide-en.pdf)**
 
-### UC100 Decoder with history 
-**[UC100 Payload Decoder (JS)](https://github.com/ElcompMatt/MilesightUC100/blob/main/UC100WithHistoryDecoder.js)**
-
+## UC100 Decoder with history 
 This is a JS script to decode the Milesight UC100 modbus device and convert that data as well as historical transmissions into a single format for consumption by a webhook or similar.  
+
+**[UC100 Payload Decoder (JS)](https://github.com/ElcompMatt/MilesightUC100/blob/main/UC100WithHistoryDecoder.js)**
 
 It uses the existing Milesight payload decoders and then puts it in a structured format. 
 
 Currently the real time and historical is in two seperate payload formats from the device, the prupose of this is to have both real time and history data in the same format. 
 
-### UC100 JSON Model For C
+### Scaling Properties
+
+In the script there are two properties for scaling the values in an end point/webhook, not in TTN.
+
+**ScalingValue : int**
+This is to set a value to be claculated later. On occasions, I am asked to do the scaling on the fly when using client webhooks as they don't have the ability to do it. 
+
+This should be left at 1 if no action is to be taken.
+
+**ScalingChannel : int**
+There are times where modbus devices have a register that either holds a fixed scaling value or scaling value that can change value as registers increase in size. 
+When you conigure the UC100, you can define the scaling channel address, then use that address. This will tell your logic in the webhook to take the value ffom that register value and perform a calculation. 
+
+This should be left at -1 if no action is to be taken.
+
+## UC100 JSON Model For C
 
 This is a C# JSON Model to process the data sent in the payload. 
 
@@ -42,7 +57,7 @@ public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "
 }
 ```
 
-### Unix Time Helper Class 
-**[DateTime Helper Class or Unix Time (C#)](https://github.com/ElcompMatt/MilesightUC100/blob/main/UnixTimeConverter.cs)**
-
+## Unix Time Helper Class 
 This is a simple converter for converting the Unix seconds timestamp in the payload to standard DateTime string. You can convert it to whatever format you want ater that. 
+
+**[DateTime Helper Class or Unix Time (C#)](https://github.com/ElcompMatt/MilesightUC100/blob/main/UnixTimeConverter.cs)**
